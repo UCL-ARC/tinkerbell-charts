@@ -110,12 +110,6 @@ spec:
           claimName: hook-artifacts
       {{- end }}
       {{- end }}
-      - name: nginx-conf
-        configMap:
-          name: nginx-conf
-          items:
-            - key: nginx.conf
-              path: nginx.conf.template
       initContainers:
       - name: relay-macvlan-interface
         command:
