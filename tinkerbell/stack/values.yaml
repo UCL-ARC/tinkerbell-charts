@@ -11,17 +11,10 @@ stack:
   loadBalancerIP: &publicIP 192.168.2.112
   lbClass: kube-vip.io/kube-vip-class
   # Once the Kubernetes Gateway API is more stable, we will use that for all services instead of nginx.
-  image: nginx:1.25.1
+  image: ghcr.io/t-young31/tink-stack
   hook:
-    enabled: true
     name: hook-files
     port: 8080
-    image: bash
-    downloadsDest: /opt/hook
-    persistentStorage: true
-    # storageClass: ceph-filesystem
-    # httpProxy: http://<ip>:<port>
-    downloadURL: https://github.com/tinkerbell/hook/releases/download/v0.8.1/hook_x86_64.tar.gz
   kubevip:
     enabled: true
     name: kube-vip
