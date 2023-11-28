@@ -40,6 +40,13 @@ spec:
         - name: download-hook
           image: {{ .Values.stack.hook.image }}
           command: ["/script/entrypoint.sh"]
+          {{- if .Values.stack.hook.httpProxy }}
+          env:
+            - name: http_proxy
+              value: {{ .Values.stack.hook.httpProxy }}
+            - name: https_proxy
+              value: {{ .Values.stack.hook.httpProxy }}
+          {{- end }}
           volumeMounts:
             - mountPath: /output
               name: hook-artifacts

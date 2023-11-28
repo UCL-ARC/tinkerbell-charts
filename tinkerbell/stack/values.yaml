@@ -20,6 +20,7 @@ stack:
     downloadsDest: /opt/hook
     persistentStorage: true
     # storageClass: ceph-filesystem
+    # httpProxy: http://<ip>:<port>
     downloadURL: https://github.com/tinkerbell/hook/releases/download/v0.8.1/hook_x86_64.tar.gz
   kubevip:
     enabled: true
