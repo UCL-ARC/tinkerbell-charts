@@ -47,10 +47,19 @@ spec:
               name: configmap-volume
       restartPolicy: OnFailure
       volumes:
+        {{- if .Values.stack.hook.enabled }}
+        {{- if not .Values.stack.hook.persistentStorage }}
         - name: hook-artifacts
           hostPath:
             path: {{ .Values.stack.hook.downloadsDest }}
             type: DirectoryOrCreate
+        {{- end }}
+        {{- if .Values.stack.hook.persistentStorage }}
+        - name: hook-artifacts
+          persistentVolumeClaim:
+            claimName: hook-artifacts
+        {{- end }}
+        {{- end }}
         - name: configmap-volume
           configMap:
             defaultMode: 0700
