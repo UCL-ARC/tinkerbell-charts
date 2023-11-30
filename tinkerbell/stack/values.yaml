@@ -11,7 +11,7 @@ stack:
   loadBalancerIP: &publicIP 192.168.2.112
   lbClass: kube-vip.io/kube-vip-class
   # Once the Kubernetes Gateway API is more stable, we will use that for all services instead of nginx.
-  image: ghcr.io/t-young31/tink-stack
+  image: ghcr.io/ucl-arc/tink-stack
   hook:
     name: hook-files
     port: 8080
